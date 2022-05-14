@@ -18,23 +18,28 @@ window.addEventListener('load', () => {
                 return response.json();
             })
             .then(data =>{
-                console.log(data);
+                // console.log(data);
                 //array named current that contains the temp
                 const {temp_f} = data.current;
                 const {text} = data.current.condition;
                 const {tz_id} = data.location;
+                const {icon} = data.current.condition;
                 //Set DOM Elmements from the API
                 temperatureDegree.textContent = temp_f;
                 temperatureDescription.textContent = text;
                 locationTimezone.textContent = tz_id;
+                    //Set Icon
+                    setIcons(icon, document.querySelector('.icon'));
             });
         });
 
 
     }
-    
-    // function setIcons(icon, iconID){
-    //   const skycons = new skycons({color: "white"});
-    //   const currentIcon =   
-    // }
+    //Icons
+    function setIcons(icon, iconID){
+      const skycons = new Skycons({color: "white"});
+      const currentIcon = icon.replace(/-/g, "_").toUpperCase();
+      skycons.play();
+      return skycons.set(iconID, Skycons[currentIcon]);  
+    }
 });
