@@ -4,6 +4,8 @@ window.addEventListener('load', () => {
     let temperatureDescription = document.querySelector(".temperature-description");
     let temperatureDegree = document.querySelector(".temperature-degree");
     let locationTimezone = document.querySelector(".location-timezone");
+    let temperatureSection = document.querySelector(".temperature");
+    const temperatureSpan = document.querySelector(".temperature span");
 
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(position => {
@@ -20,16 +22,31 @@ window.addEventListener('load', () => {
             .then(data =>{
                 // console.log(data);
                 //array named current that contains the temp
-                const {temp_f} = data.current;
-                const {text} = data.current.condition;
-                const {tz_id} = data.location;
-                const {icon} = data.current.condition;
+                const { temp_f } = data.current;
+                const { text } = data.current.condition;
+                const { tz_id } = data.location;
+                const { icon } = data.current.condition;
                 //Set DOM Elmements from the API
                 temperatureDegree.textContent = temp_f;
                 temperatureDescription.textContent = text;
                 locationTimezone.textContent = tz_id;
+                    //FORMULA FOR CELSIUS
+                    let celsius = (temperature - 32) * (5 / 9);
+
                     //Set Icon
-                    setIcons(icon, document.querySelector('.icon'));
+                    setIcons(icon, document.querySelector(".icon"));
+
+                    //Change temperature to celsius/fahrenheit
+                    temperatureSection.addEventListener('click', () => {
+                        if (temperatureSpan.textContent === "F"){
+                            temperatureSpan.textContent = "C";
+                            temperatureDegree.textContent = Math.floor(celsius);
+                        } else {
+                            temperatureSpan.textContent = "F";
+                            temperatureDegree.textContent = temperature;
+                        }
+                    });
+
             });
         });
 
