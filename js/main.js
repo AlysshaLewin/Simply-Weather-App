@@ -6,6 +6,8 @@ window.addEventListener('load', () => {
     let locationTimezone = document.querySelector(".location-timezone");
     let temperatureSection = document.querySelector(".temperature");
     const temperatureSpan = document.querySelector(".temperature span");
+   
+
 
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(position => {
@@ -20,7 +22,7 @@ window.addEventListener('load', () => {
                 return response.json();
             })
             .then(data =>{
-                // console.log(data);
+                console.log(data);
                 //array named current that contains the temp
                 const { temp_f } = data.current;
                 const { text } = data.current.condition;
@@ -31,10 +33,11 @@ window.addEventListener('load', () => {
                 temperatureDescription.textContent = text;
                 locationTimezone.textContent = tz_id;
                     //FORMULA FOR CELSIUS
-                    let celsius = (temperature - 32) * (5 / 9);
+                    let celsius = (temp_f - 32) * (5 / 9);
 
                     //Set Icon
-                    setIcons(icon, document.querySelector(".icon"));
+                    // setIcons(icon, document.querySelector(".icon"));
+                 document.querySelector(".icon").setAttribute("src", icon)
 
                     //Change temperature to celsius/fahrenheit
                     temperatureSection.addEventListener('click', () => {
@@ -43,7 +46,7 @@ window.addEventListener('load', () => {
                             temperatureDegree.textContent = Math.floor(celsius);
                         } else {
                             temperatureSpan.textContent = "F";
-                            temperatureDegree.textContent = temperature;
+                            temperatureDegree.textContent = temp_f;
                         }
                     });
 
@@ -52,11 +55,5 @@ window.addEventListener('load', () => {
 
 
     }
-    //Icons
-    function setIcons(icon, iconID){
-      const skycons = new Skycons({color: "white"});
-      const currentIcon = icon.replace(/-/g, "_").toUpperCase();
-      skycons.play();
-      return skycons.set(iconID, Skycons[currentIcon]);  
-    }
+
 });
