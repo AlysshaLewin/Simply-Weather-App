@@ -1,4 +1,6 @@
-*{
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -42,3 +44,222 @@ body{
 .degree-section h2 {
     font-size: 40px;
 }
+
+/* -------------------------------------------------------------------------------- */
+
+/* Top Bar */
+
+.nav {
+    background: #232323;
+    height: 60px;
+    display: inline-block;
+}
+ 
+.nav li {
+    float: left;
+    list-style-type: none;
+    position: relative;
+}
+
+.nav li a {
+    font-size: 16px;
+    color: white;
+    display: block;
+    line-height: 60px;
+    padding: 0 26px;
+    text-decoration: none;
+    border-left: 1px solid #2e2e2e;
+    font-family: Montserrat, sans-serif;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+.nav li a:hover {
+    background-color: #2e2e2e;
+}
+ 
+#settings a {
+    padding: 18px;
+    height: 24px;
+    font-size: 10px;
+    line-height: 24px;
+}
+
+/* Search Box */
+#search {
+    width: 357px;
+    margin: 4px;
+}
+#search_text{
+    width: 297px;
+    padding: 15px 0 15px 20px;
+    font-size: 16px;
+    font-family: Montserrat, sans-serif;
+    border: 0 none;
+    height: 52px;
+    margin-right: 0;
+    color: white;
+    outline: none;
+    background: rgb(47,150,163);
+    float: left;
+    box-sizing: border-box;
+    transition: all 0.15s;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: white;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: white;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: white;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: white;
+}
+#search_text:focus {
+    background: rgb(47,150,163);
+}
+#search_button {
+    border: 0 none;
+    background: rgb(47,150,163) url(search.png) center no-repeat;
+    width: 60px;
+    float: left;
+    padding: 0;
+    text-align: center;
+    height: 52px;
+    cursor: pointer;
+}
+
+/* Dropdown */
+#options a{
+    border-left: 0 none;
+}
+#options&gt;a {
+    background-image: url(triangle.png);
+    background-position: 85% center;
+    background-repeat: no-repeat;
+    padding-right: 42px;
+}
+.subnav {
+    visibility: hidden;
+    position: absolute;
+    top: 110%;
+    right: 0;
+    width: 200px;
+    height: auto;
+    opacity: 0;
+    transition: all 0.1s;
+    background: #232323;
+}
+.subnav li {
+    float: none;
+}
+.subnav li a {
+    border-bottom: 1px solid #2e2e2e;
+}
+#options:hover .subnav {
+    visibility: visible;
+    top: 100%;
+    opacity: 1;
+}
+
+/* [ON BIG SCREEN] */
+/* (A) WRAPPER */
+/* #hamnav {
+    width: 100%;
+    background: #000;
+} */
+  
+  /* (B) HORIZONTAL MENU ITEMS */
+/* #hamitems { 
+    display: flex; 
+}
+
+#hamitems a {
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+  
+#hamitems a:hover { 
+    background: #af0d0d; 
+} */
+  
+  /* (C) HIDE HAMBURGER */
+/* #hamnav label, #hamburger { 
+    display: none; 
+} */
+
+
+/* -------------------------------------------------------------------------------- */
+
+
+
+/* Media Queries */
+
+/* [ON SMALL SCREENS] */
+/* @media screen and (max-width: 768px){ */
+    /* (A) BREAK INTO VERTICAL MENU */
+    /* #hamitems a {
+      box-sizing: border-box;
+      display: block;
+      width: 100%;
+      border-top: 1px solid #333;
+    } */
+   
+    /* (B) SHOW HAMBURGER ICON */
+    /* #hamnav label { 
+      display: inline-block; 
+      color: white;
+      background: #a02620;
+      font-style: normal;
+      font-size: 1.2em;
+      padding: 10px;
+    } */
+  
+    /* (C) TOGGLE SHOW/HIDE MENU */
+    /* #hamitems { 
+        display: none; 
+    }
+
+    #hamnav input:checked ~ #hamitems { 
+        display: block; 
+    }
+} */
+
+
+
+
+
+
+/* Extra small devices (phones, 600px and down)
+@media only screen and (max-width: 600px) {
+
+
+}
+
+Small devices (portrait tablets and large phones, 600px and up)
+@media only screen and (min-width: 600px) {
+
+
+}
+
+Medium devices (landscape tablets, 768px and up)
+@media only screen and (min-width: 768px) {
+
+
+}
+
+Large devices (laptops/desktops, 992px and up)
+@media only screen and (min-width: 992px) {
+
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/* @media only screen and (min-width: 1200px) {
+
+
+}  */
